@@ -1,0 +1,31 @@
+import streamlit as st
+import numpy as np
+import time
+
+st.title("今日の晩ごはんは何にする？")
+name=st.sidebar.text_input("名前を入れてください")
+if st.button("ここをクリック"):
+  
+  options = ["肉じゃが","焼き魚","オムライス","ハンバーグ","野菜炒め"]
+  menu = np.random.choice(options, 1, p=[0.2,0.2,0.2,0.2,0.2])[0]
+
+  if menu=="肉じゃが":
+    image = "daikichi.png"
+  elif menu=="焼き魚":
+    image = "suekichi.png"
+  elif menu=="オムライス":
+    image = "kichi.png"  
+ elif menu=="ハンバーグ":
+    image = "kichi.png" 
+  elif menu=="野菜炒め":
+    image = "kyo.png"
+
+  st.image("loading.png", caption=f"{name}さんの{今日の晩ごはんは？↓↓↓", use_column_width=True)
+  time.sleep(3)
+
+  st.write(menu)
+  st.image(image, use_column_width=True)
+
+  if st.button("リセット"):
+    placeholder = st.empty()
+    placeholder.empty()
